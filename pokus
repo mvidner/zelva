@@ -1,0 +1,48 @@
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+require "zelva"
+
+nauč_se(:rotačně) { |kolik, &úkol|
+  opakuj(kolik) {
+    doprava 360.0 / kolik
+    úkol.call
+  }
+}
+
+nauč_se(:mnohoúhelníkově) { |velikost, stran, &úkol|
+  opakuj(stran) {
+    vpřed velikost.to_f / stran
+    doprava 360.0 / stran
+    úkol.call
+  }
+}
+
+nauč_se(:mnohoúhelník) { |velikost, stran|
+  mnohoúhelníkově(velikost, stran) {
+  }
+}
+
+nauč_se(:hvězdově) { |velikost, stran, přeskoč, &úkol|
+  opakuj(stran) {
+    vpřed velikost.to_f / stran * (přeskoč + 1)
+    doprava (360.0 / stran) * (přeskoč + 1)
+    úkol.call
+  }
+}
+
+nauč_se(:hvězda) { |velikost, stran, přeskoč|
+  hvězdově(velikost, stran, přeskoč) {
+  }
+}
+
+
+želvo.kresli {
+
+#  mnohoúhelník 70, 6
+#  hvězda 100, 7, 2
+  rotačně(24) {
+    hvězda 400, 11, 2
+  }
+}
+
+čekej
