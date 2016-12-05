@@ -1,11 +1,13 @@
 #!/usr/bin/env ruby
 # -*- coding: utf-8 -*-
-require "zelva"
+require "česky"
+
+potřebuju "želva"
 
 nauč_se(:rotačně) { |kolik, &úkol|
   opakuj(kolik) {
     doprava 360.0 / kolik
-    úkol.call
+    úkol.proveď
   }
 }
 
@@ -13,7 +15,7 @@ nauč_se(:mnohoúhelníkově) { |velikost, stran, &úkol|
   opakuj(stran) {
     vpřed velikost.to_f / stran
     doprava 360.0 / stran
-    úkol.call
+    úkol.proveď
   }
 }
 
@@ -26,7 +28,7 @@ nauč_se(:hvězdově) { |velikost, stran, přeskoč, &úkol|
   opakuj(stran) {
     vpřed velikost.to_f / stran * (přeskoč + 1)
     doprava (360.0 / stran) * (přeskoč + 1)
-    úkol.call
+    úkol.proveď
   }
 }
 
